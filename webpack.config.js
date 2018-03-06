@@ -29,6 +29,16 @@ const assets = () => () => ({
   module: {
     rules: [
       { test: /\.(png|jpe?g|svg|woff2?|ttf|eot)$/, loader: 'url-loader?limit=8000' },
+      {
+        test: /\.scss$/,
+        use: [{
+            loader: "style-loader" // creates style nodes from JS strings
+        }, {
+            loader: "css-loader" // translates CSS into CommonJS
+        }, {
+            loader: "sass-loader" // compiles Sass to CSS
+        }]
+      }
     ],
   },
 })
