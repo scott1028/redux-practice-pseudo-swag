@@ -13,6 +13,9 @@ const Wrapper = styled.div`
   @media screen and (max-width: 640px) {
     padding-top: 3.25rem;
   }
+  // background: url(/bg-web.png) no-repeat center center;
+  // background-size: cover;
+  // background-attachment: fixed;
 `
 
 const Header = styled.header`
