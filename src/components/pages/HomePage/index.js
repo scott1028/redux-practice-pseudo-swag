@@ -6,20 +6,10 @@ import { PostForm, PostList } from 'containers'
 
 const HomePage = () => {
   return (
-    <PageTemplate header={<Header />} footer={<Footer />}>
+    <PageTemplate header={<Header title="Pseudo Swag" />} footer={<Footer />}>
       <PostForm />
-      {/* <PostList limit={15} /> */}
     </PageTemplate>
   )
-  // return (
-  //   <PageTemplate
-  //     header={<Header />}
-  //     hero={<Hero />}
-  //     footer={<Footer />}
-  //   >
-  //     <FeatureList />
-  //   </PageTemplate>
-  // )
 }
 
 export default HomePage
