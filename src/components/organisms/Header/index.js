@@ -40,7 +40,7 @@ const Header = ({ title, ...props }) => {
   return (
     <Wrapper opaque reverse {...props}>
       <InnerWrapper>
-        <IconLink to="/" icon="arc" height={100} />
+        <IconLink to="/" icon="swag-icon" height={50} />
         <BannerWrapper>{title}</BannerWrapper>
         {/* <StyledPrimaryNavigation reverse /> */}
         {/* <UserButton reverse transparent /> */}
