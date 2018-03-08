@@ -2,7 +2,7 @@ import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 import { injectGlobal, ThemeProvider } from 'styled-components'
 
-import { HomePage, SamplePage, NotFoundPage, DashboardPage } from 'components'
+import { HomePage, SamplePage, NotFoundPage, DashboardPage, ChatPage } from 'components'
 import { GoogleTagManager } from 'containers'
 
 // https://github.com/diegohaz/arc/wiki/Styling
@@ -22,6 +22,7 @@ const App = () => {
         <Switch>
           <Route path="/" component={HomePage} exact />
           <Route path="/dashboard" component={DashboardPage} />
+          <Route path="/chats/:id" component={ChatPage} />
           {/* <Route path="/sample-page" component={SamplePage} /> */}
           <Route component={NotFoundPage} />
         </Switch>

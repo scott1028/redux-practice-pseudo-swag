@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { font, palette } from 'styled-theme'
+import { withRouter } from 'react-router-dom'
+import { apiUrl } from 'config'
 // import { ifProp } from 'styled-tools'
 
 // import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
@@ -29,15 +31,16 @@ const OnwerLabel = styled.label`
   background-color: ${palette('primary', 0)}
 `
 
-const enterChat = (chatId) => {
+const enterChat = (chatId, push) => {
   return () => {
     console.log(chatId)
+    push(`/chats/${chatId}`)
   }
 }
 
 const ChatItem = (props) => {
   return (
-    <Wrapper onClick={enterChat(props.id)}>
+    <Wrapper onClick={enterChat(props.id, props.history.push)}>
       <ImageDiv><Image src={props.avatar} /></ImageDiv>
       <OnwerLabel>{props.owner}</OnwerLabel>
       <Label>{props.members}</Label>
@@ -53,4 +56,6 @@ const ChatItem = (props) => {
 //   code: PropTypes.node,
 // }
 
-export default ChatItem
+export default withRouter(props => (
+  <ChatItem {...props} />
+))
