@@ -19,7 +19,8 @@
     "build:copy": "copyfiles -u 1 public/* public/**/* dist",
     "prebuild": "npm run build:clean && npm run build:copy",
     "build": "npm run env:prod -- webpack",
-    "build:example": "npm run env:example -- npm run build"
+    "build:example": "npm run env:example -- npm run build",
+    "api:mock": "json-server ./mock-json-server/mock.js --routes ./mock-json-server/routes.json -p 3331"
   },
   "jest": {
     "moduleDirectories": [
@@ -64,9 +65,11 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.0.1",
+    "faker": "^4.1.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.26.0",
     "jest-cli": "^22.1.4",
+    "json-server": "^0.12.1",
     "node-sass": "^4.7.2",
     "opn-cli": "^3.1.0",
     "raw-loader": "^0.5.1",

@@ -14,27 +14,36 @@ const Form = styled.form`
   padding: 1rem;
 `
 
-const Gap = styled.span`
-  width: 10px;
-  display: inline-block;
+const Gap = styled.div`
+  height: 2vh;
+  display: block;
 `
 
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-item: center;
+const commonStyle = `font-size: 5vmin;`;
+
+const StyledField = styled(Field)`
+  ${commonStyle}
+`
+
+const StyledButton = styled(Button)`
+  ${commonStyle}
+  width: 100%;
+`
+
+const StyledHeading = styled(Heading)`
+  ${commonStyle}
 `
 
 const PostForm = ({ handleSubmit, submitting, reset, ...props }) => {
   return (
     <Form onSubmit={handleSubmit}>
-      <Heading level={2}>Please enter your name here!</Heading>
-      <Field name="username" label="Your Name" type="text" component={ReduxField} />
-      <ButtonGroup>
-        <Button type="submit" disabled={submitting}>Enter</Button>
-        <Gap />
-        <Button type="button" disabled={submitting} onClick={() => reset()}>Clear</Button>
-      </ButtonGroup>
+      <StyledHeading level={2}>Please enter your name here!</StyledHeading>
+      <StyledField name="username" label="Your Name" type="text" component={ReduxField} />
+      <Gap />
+      <Gap />
+      <StyledButton type="submit" disabled={submitting}>Enter</StyledButton>
+      <Gap />
+      <StyledButton type="button" disabled={submitting} onClick={() => reset()}>Clear</StyledButton>
     </Form>
   )
 }

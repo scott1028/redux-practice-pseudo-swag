@@ -34,6 +34,18 @@ const BannerWrapper = styled.h2`
   & {
     margin: 0px
   }
+
+  @media screen and (max-width: 1024px) {
+    // font-size: 5vw;
+  }
+
+  @media screen and (max-width: 768px) {
+    // font-size: 5vw;
+  }
+
+  @media screen and (max-width: 425px) {
+    font-size: 5vw;
+  }
 `
 
 const Header = ({ title, ...props }) => {

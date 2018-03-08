@@ -1,29 +1,41 @@
-import React from 'react'
-import { reduxForm } from 'redux-form'
-import { resourceCreateRequest } from 'store/actions'
-import { createValidator, required } from 'services/validation'
+import React, { Component } from 'react'
+// import { reduxForm } from 'redux-form'
+// import { resourceCreateRequest } from 'store/actions'
+// import { createValidator, required } from 'services/validation'
 import { withRouter } from 'react-router-dom'
 
-import { ChatItem } from 'components'
+import { ChatItem, ChatContainer } from 'components'
+import api from 'services/api'
+import { apiUrl } from 'config'
 
-const PostFormContainer = props => <ChatItem {...props} />
-
-const onSubmit = (data, dispatch, props) =>
-  dispatch(resourceCreateRequest('login', data))
-    .catch(() => props.history.push('dashboard'))
-
-const validate = createValidator({
-  title: [required],
-  body: [required],
-})
-
-const ReduxForm = reduxForm({
-  form: 'PostForm',
-  destroyOnUnmount: false,
-  onSubmit,
-  validate,
-})(PostFormContainer)
+class Dashboard extends Component {
+  constructor(props) {
+    super(props)
+    var self = this;
+    this.state = {
+      chats: [],
+      date: new Date()
+    }
+    fetch(`${apiUrl}/api/chats/`).then(function(resp){
+      return resp.json()
+    }).then(function(data){
+      self.setState({
+        chats: data
+      });
+    })
+  }
+  render() {
+    const self = this
+    return (
+      <ChatContainer>
+        {
+          self.state.chats.map(row => <ChatItem key={row.id} {...row} />)
+        }
+      </ChatContainer>
+    )
+  }
+}
 
 export default withRouter(({ history }) => (
-  <ReduxForm history={history} />
+  <Dashboard history={history} />
 ))

@@ -9,8 +9,9 @@ import { PostForm } from 'components'
 const PostFormContainer = props => <PostForm {...props} />
 
 const onSubmit = (data, dispatch, props) =>
-  dispatch(resourceCreateRequest('login', data))
-    .catch(() => props.history.push('dashboard'))
+  dispatch(resourceCreateRequest('api/login', data))
+    .then(() => props.history.push('dashboard'))
+    .catch(() => console.log('fail'))
 
 const validate = createValidator({
   title: [required],
