@@ -19,7 +19,7 @@ const Gap = styled.div`
   display: block;
 `
 
-const commonStyle = `font-size: 5vmin;`;
+const commonStyle = `font-size: 1.5rem;`;
 
 const StyledField = styled(Field)`
   ${commonStyle}

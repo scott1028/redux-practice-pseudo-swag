@@ -48,12 +48,13 @@ const BannerWrapper = styled.h2`
   }
 `
 
-const Header = ({ title, ...props }) => {
+const Header = ({ title, icon, iconLink, sideRightMenu, ...props }) => {
   return (
     <Wrapper opaque reverse {...props}>
       <InnerWrapper>
-        <IconLink to="/" icon="swag-icon" height={50} />
+        <IconLink to={iconLink} icon={icon} height={50} />
         <BannerWrapper>{title}</BannerWrapper>
+        {sideRightMenu}
         {/* <StyledPrimaryNavigation reverse /> */}
         {/* <UserButton reverse transparent /> */}
       </InnerWrapper>
@@ -63,6 +64,14 @@ const Header = ({ title, ...props }) => {
 
 Header.propTypes = {
   title: PropTypes.string,
+  icon: PropTypes.string,
+  iconLink: PropTypes.string,
+  sideRightMenu: PropTypes.node,
+}
+
+Header.defaultProps = {
+  icon: 'swag-icon',
+  iconLink: '/',
 }
 
 export default Header

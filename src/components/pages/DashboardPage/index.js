@@ -1,10 +1,10 @@
 import React from 'react'
-import { PageTemplate, Header, Footer, Heading } from 'components'
+import { PageTemplate, Header, Footer, Heading, CreateChatButton } from 'components'
 import { Dashboard } from 'containers'
 
 const DashboardPage = () => {
   return (
-    <PageTemplate header={<Header title="Pseudo Swag Dashboard" />} footer={<Footer />}>
+    <PageTemplate header={<Header title="Dashboard" sideRightMenu={<CreateChatButton />} />} footer={<Footer />}>
       <Dashboard />
     </PageTemplate>
   )

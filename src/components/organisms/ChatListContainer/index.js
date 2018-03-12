@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 // import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
 
-const Wrapper = styled.div`
+const ChatListContainer = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -54,4 +54,4 @@ const Wrapper = styled.div`
 // //   code: PropTypes.node,
 // // }
 
-export default Wrapper
+export default ChatListContainer

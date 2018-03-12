@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 // import { createValidator, required } from 'services/validation'
 import { withRouter } from 'react-router-dom'
 
-import { ChatItem, ChatContainer } from 'components'
+import { ChatItem, ChatListContainer } from 'components'
 import api from 'services/api'
 import { apiUrl } from 'config'
 
@@ -27,11 +27,11 @@ class Dashboard extends Component {
   render() {
     const self = this
     return (
-      <ChatContainer>
+      <ChatListContainer>
         {
           self.state.chats.map(row => <ChatItem key={row.id} {...row} />)
         }
-      </ChatContainer>
+      </ChatListContainer>
     )
   }
 }
