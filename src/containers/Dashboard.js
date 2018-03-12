@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 // import { resourceCreateRequest } from 'store/actions'
 // import { createValidator, required } from 'services/validation'
 import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
 
 import { ChatItem, ChatListContainer } from 'components'
 import api from 'services/api'
@@ -16,12 +17,10 @@ class Dashboard extends Component {
       chats: [],
       date: new Date()
     }
-    fetch(`${apiUrl}/api/chats/`).then(function(resp){
-      return resp.json()
-    }).then(function(data){
+    props.loadChats().then(function(data){
       self.setState({
         chats: data
-      });
+      })
     })
   }
   render() {
@@ -36,6 +35,17 @@ class Dashboard extends Component {
   }
 }
 
-export default withRouter(({ history }) => (
-  <Dashboard history={history} />
-))
+const mapDispatchToProps = dispatch => ({
+  loadChats: () => dispatch({
+    type: 'REQUEST_CHAT_LIST',
+    url: '/api/chats',
+    payload: {},
+    meta: {
+      thunk: true,
+    },
+  }),
+})
+
+export default connect(null, mapDispatchToProps)(withRouter(({ history, ...props }) => (
+  <Dashboard history={history} {...props} />
+)))

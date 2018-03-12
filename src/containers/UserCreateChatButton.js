@@ -18,6 +18,14 @@ const UserCreateChatButton = props => <CreateChatButton {...props} />
 const mapDispatchToProps = dispatch => ({
   onClick: () => dispatch({
     type: 'CREATE_CHAT_START',
+    url: '/api/chats',
+    payload: {},
+    meta: {
+      thunk: true,
+    },
+  }).then(function(detail){
+    // debugger;
+    console.log(detail);
   }),
 })
 
