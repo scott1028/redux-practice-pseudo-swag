@@ -99,13 +99,16 @@ const Gap = styled.div`
 
 const ButtonBox = styled.div`
   flex: 1;
+  & button {
+    font-size: 0.8rem;
+  }
 `
 
-const CreateChatButton = styled(({ className }) => (
+const CreateChatButton = styled(({ className, onClick }) => (
   <ButtonBox>
-    {/* <Button className={className} type="button">Log-out</Button>
-    <Gap className={className} /> */}
-    <Button className={className} type="button">Create</Button>
+    <Button className={className} type="button">Log-out</Button>
+    <Gap className={className} />
+    <Button className={className} type="button" onClick={onClick}>Create</Button>
   </ButtonBox>))`
   float: right;
 `
