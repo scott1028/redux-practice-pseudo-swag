@@ -8,7 +8,7 @@ import socketIOClient from 'socket.io-client'
 class ChatPage extends Component {
   constructor(props) {
     super(props)
-    console.log(props.location.state)
+    console.log(props.location.state) // eslint-disable-line
     console.log(socketIOClient)
 
     this.state = {
@@ -16,7 +16,7 @@ class ChatPage extends Component {
       // chats: [],
       // date: new Date()
       currentMsg: '',
-      messages: [],
+      messages: [], // eslint-disable-line
     }
     this.onSendMsg = this.onSendMsg.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
@@ -66,7 +66,7 @@ class ChatPage extends Component {
         header={<Header
           title="Chat"
           icon="left-arrow"
-          iconLink={history.back}
+          iconLink={history.back} // eslint-disable-line
         />}
       >
         <Chat
