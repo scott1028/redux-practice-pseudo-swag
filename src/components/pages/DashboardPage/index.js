@@ -41,7 +41,7 @@ class DashboardPage extends Component {
   render(){
     var self = this;
     return (
-      <PageTemplate header={<Header title="Dashboard" sideRightMenu={<UserCreateChatButton onClick={self.createChat} />} />} footer={<Footer />}>
+      <PageTemplate header={<Header title="Dashboard" sideRightMenu={<UserCreateChatButton onCreateChat={self.createChat} onLogout={function(){location.href = '/';}} />} />} footer={<Footer />}>
         <Dashboard chats={self.state.chats} />
       </PageTemplate>
     )

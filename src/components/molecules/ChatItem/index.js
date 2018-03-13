@@ -45,7 +45,7 @@ const ChatItem = (props) => {
   return (
     <Wrapper onClick={enterChat(props.id, props.username, props.history.push)}>
       <ImageDiv><Image src={props.avatar} /></ImageDiv>
-      <OnwerLabel>{props.owner}</OnwerLabel>
+      <OnwerLabel>{props.id}</OnwerLabel>
       <Label>{props.numUsers}</Label>
     </Wrapper>)
 }
