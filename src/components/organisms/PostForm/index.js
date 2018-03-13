@@ -38,7 +38,7 @@ const PostForm = ({ handleSubmit, submitting, reset, ...props }) => {
   return (
     <Form onSubmit={handleSubmit}>
       <StyledHeading level={2}>Please enter your name here!</StyledHeading>
-      <StyledField name="username" label="Your Name" type="text" component={ReduxField} />
+      <StyledField name="username" label="Your Name" type="text" required={true} component={ReduxField} />
       <Gap />
       <Gap />
       <StyledButton type="submit" disabled={submitting}>Enter</StyledButton>
