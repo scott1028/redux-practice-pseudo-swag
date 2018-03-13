@@ -52,7 +52,13 @@ const Header = ({ title, icon, iconLink, sideRightMenu, ...props }) => {
   return (
     <Wrapper opaque reverse {...props}>
       <InnerWrapper>
-        <IconLink to={iconLink} icon={icon} height={50} />
+        {
+          (iconLink && (iconLink === history.back))
+          ?
+          (<IconLink onClick={() => history.back()} icon={icon} height={50} />)
+          :
+          (<IconLink to={iconLink} icon={icon} height={50} />)
+        }
         <BannerWrapper>{title}</BannerWrapper>
         {sideRightMenu}
         {/* <StyledPrimaryNavigation reverse /> */}
@@ -65,7 +71,10 @@ const Header = ({ title, icon, iconLink, sideRightMenu, ...props }) => {
 Header.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.string,
-  iconLink: PropTypes.string,
+  iconLink: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func,
+  ]),
   sideRightMenu: PropTypes.node,
 }
 

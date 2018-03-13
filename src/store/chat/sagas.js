@@ -5,7 +5,7 @@ export function* createChatStart(api, action) {
   try {
     console.log(api, action);
     // https://github.com/diegohaz/arc/wiki/API-service
-    const detail = yield call([api, api.post], action.url, action.preload)
+    const detail = yield call([api, api.post], action.url, action.payload)
     // https://github.com/diegohaz/arc/wiki/Actions#async-actions
     yield put({
       type: actions.CREATE_CHAT_SUCCESS,
@@ -19,7 +19,7 @@ export function* createChatStart(api, action) {
     })
   } catch (e) {
     yield put({
-      type: actions.CREATE_CHAT_SUCCESS,
+      type: actions.CREATE_CHAT_FAIL,
       payload: e,
       meta: {
         thunk: action.meta.thunk,
@@ -55,9 +55,19 @@ export function* createChatFail(api, action) {
 export function* requestChatList(api, action) {
   try {
     const detail = yield call([api, api.get], action.url, action.payload)
+    var chats = []
+    for(var k in detail){
+      chats.push({
+        id: k,
+        owner: null,
+        avatar: '/avatar.jpg',
+        members: 0,
+        ...detail[k]
+      })
+    }
     yield put({
       type: actions.CREATE_CHAT_SUCCESS,
-      payload: detail,
+      payload: chats,
       meta: {
         thunk: action.meta.thunk,
       },

@@ -5,7 +5,7 @@ var faker = require('faker');
 module.exports = () => {
     const data = {};
 
-    for(let i = 1; i <= 100; i++){
+    for(let i = 1; i <= 3; i++){
         data.chats = data.chats || [];
         data.chats.push({
             id: i,

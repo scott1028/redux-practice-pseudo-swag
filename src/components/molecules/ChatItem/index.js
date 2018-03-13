@@ -31,19 +31,22 @@ const OnwerLabel = styled.label`
   background-color: ${palette('primary', 0)}
 `
 
-const enterChat = (chatId, push) => {
+const enterChat = (chatId, username, push) => {
   return () => {
-    console.log(chatId)
-    push(`/chats/${chatId}`)
+    console.log(chatId, username)
+    push(`/chats/${chatId}`, {
+      username,
+      chatId,
+    })
   }
 }
 
 const ChatItem = (props) => {
   return (
-    <Wrapper onClick={enterChat(props.id, props.history.push)}>
+    <Wrapper onClick={enterChat(props.id, props.username, props.history.push)}>
       <ImageDiv><Image src={props.avatar} /></ImageDiv>
       <OnwerLabel>{props.owner}</OnwerLabel>
-      <Label>{props.members}</Label>
+      <Label>{props.numUsers}</Label>
     </Wrapper>)
 }
 
