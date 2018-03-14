@@ -35,7 +35,7 @@ const ControlPannel = styled.div`
 const Chat = (props) => {
   return (
     <Wrapper>
-      <MessageContainer {...props} messages={props.messages} />
+      <MessageContainer {...props} messages={props.messages} allUsers={props.allUsers} />
       <ControlPannel>
         <Div><Input type="textarea" onChange={(e) => props.onInputChange(e.target)} value={props.value} /></Div>
         <Div><Button style={{ float: 'right' }} onClick={props.onSendMsg}>Send</Button></Div>

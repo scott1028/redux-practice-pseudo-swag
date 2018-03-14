@@ -15,6 +15,7 @@ class ChatPage extends Component {
       // username: self.props.history.location.state.username,
       // chats: [],
       // date: new Date()
+      allUsers: [],
       textarea: {
         value: '',
       },
@@ -23,23 +24,33 @@ class ChatPage extends Component {
     }
     this.onSendMsg = this.onSendMsg.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
-    // this.socketIoFactory = this.socketIoFactory.bind(this);
   }
-  // socketIoFactory(){
-  // }
   componentDidMount() {
     const self = this
     const io = socketIOClient(apiUrl)
     self.io = io
     // var io = self.io = socketIOClient('http://10.1.101.79:3000/')
     io.on('connect', () => {
+      if (self.props.location.state.create){
+        io.emit(
+          'createChat',
+          self.props.location.state.username,
+        )
+      }
       io.emit(
         'add user',
         self.props.location.state.username,
         self.props.location.state.chatId
       )
+      io.emit('getChats', null)
     })
-    io.on('new room chat', (data) => {
+    io.on('getChats', (data) => {
+      let chatId = self.props.location.state.chatId
+      self.setState({
+        allUsers: data[chatId].allUsers
+      })
+    })
+    io.on('room chat', (data) => {
       console.log([data])
       const nextMsg = Object.assign([], self.state.messages)
       nextMsg.push(data)
@@ -80,6 +91,7 @@ class ChatPage extends Component {
       >
         <Chat
           {...self.props}
+          allUsers={self.state.allUsers}
           value={self.state.textarea.value}
           onSendMsg={self.onSendMsg}
           onInputChange={self.onInputChange}

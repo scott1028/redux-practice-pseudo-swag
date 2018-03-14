@@ -3,6 +3,10 @@ import { PageTemplate, Header, Footer, Heading } from 'components'
 import { Dashboard, UserCreateChatButton } from 'containers'
 import { connect } from 'react-redux'
 
+import { apiUrl } from 'config'
+
+import socketIOClient from 'socket.io-client'
+
 // const DashboardPage = () => {
 class DashboardPage extends Component {
   constructor(props) {
@@ -13,29 +17,39 @@ class DashboardPage extends Component {
       chats: [],
       date: new Date()
     }
-    self.reloadChat = self.reloadChat.bind(self)
     self.createChat = self.createChat.bind(self)
-    self.reloadChat()
   }
-  reloadChat(){
-    var self = this;
-    self.props.loadChats().then(function (data) {
+  componentDidMount() {
+    const self = this
+    const io = socketIOClient(apiUrl)
+    self.io = io
+    io.on('connect', () => io.emit('getChats', null))
+    io.on('getChats', (data) => {
+      let chats = []
+      for (let k in data) {
+        chats.push({
+          id: k,
+          avatar: '/avatar.jpg',
+          numUsers: 0,
+          ...data[k]
+        })
+      }
       self.setState({
-        chats: data
+        chats: chats
       })
     })
   }
+  componentWillUnmount() {
+    this.io.disconnect()
+  }
   createChat(){
     var self = this;
-    self.props.createChat({
-      username: self.state.username,
-      avatar: "/avatar.jpg",
-      /*
-        "avatar": "/avatar.jpg",
-        "username": "test"
-      */
-    }).then(function(data){
-      self.reloadChat()
+    self.props.history.push(`/chats/${self.props.location.state.username}`, {
+      create: true,
+      chatId: self.props.location.state.username,
+      username: self.props.location.state.username,
+      allUsers: [],
+      numUsers: 1,
     })
   }
   render(){
@@ -48,28 +62,4 @@ class DashboardPage extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  loadChats: () => dispatch({
-    type: 'REQUEST_CHAT_LIST',
-    url: '/getRoomData',
-    payload: {},
-    meta: {
-      thunk: true,
-    },
-  }),
-  createChat: (data) => dispatch({
-    type: 'CREATE_CHAT_START',
-    url: '/createroom',
-    payload: {
-      //...data
-      roomName: {
-        ...data,
-      },
-    },
-    meta: {
-      thunk: true,
-    },
-  }),
-})
-
-export default connect(null, mapDispatchToProps)(DashboardPage)
+export default DashboardPage

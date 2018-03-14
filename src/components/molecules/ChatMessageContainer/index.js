@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const MsgItem = styled.div`
   display: grid;
   grid-gap: 0.5rem;
-  grid-template-columns: minmax(100px, auto) 1fr;
+  grid-template-columns: minmax(10vw, auto) 1fr;
 `
 
 const Who = styled.div`
@@ -31,7 +31,7 @@ const ChatWrapper = styled.div`
   left: 0.5rem;
   right: 0.5rem;
   display: grid;
-  grid-template-columns: 1fr 150px;
+  grid-template-columns: 1fr minmax(10vw, auto);
   grid-gap: 0.5rem;
 `
 
@@ -64,7 +64,7 @@ function getUsernameColor(username) {
   return COLORS[index]
 }
 
-const ChatMessageContainer = ({ messages, className, location: { state: { allUsers, username } } }) => {
+const ChatMessageContainer = ({ messages, className, location: { state: { username } }, allUsers }) => {
   allUsers[username] = {}
   return (
     <Wrapper className={className}>
@@ -72,14 +72,14 @@ const ChatMessageContainer = ({ messages, className, location: { state: { allUse
         <MsgWrapper>
           {messages.map((row, index) => (
             <MsgItem key={index}>
-              <Who style={{ color: getUsernameColor(row.username) }}>{row.username}{row.username}{row.username}{row.username}</Who>
+              <Who style={{ color: getUsernameColor(row.username) }}>{row.username}:</Who>
               <Msg style={{ color: getUsernameColor(row.username)}}>{row.message}</Msg>
             </MsgItem>
           ))}
         </MsgWrapper>
         <UserListWrapper>
           {Object.keys(allUsers).map((row, index) => (
-            <UserItem style={{ color: getUsernameColor(row) }}>{row}</UserItem>
+            <UserItem key={index} style={{ color: getUsernameColor(row) }}>{row}</UserItem>
           ))}
         </UserListWrapper>
       </ChatWrapper>
