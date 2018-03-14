@@ -9,17 +9,12 @@ import { Button, Input } from 'components'
 const Wrapper = styled.div`
   position: relative;
   padding: 1vmax;
-  // overflow-y: scroll;
-  // bottom: 0px;
 `
 
-const MsgBox = styled.div`
+const MsgItem = styled.div`
   display: grid;
-  grid-template-columns: minmax(auto, 1fr) 5fr 150px;
   grid-gap: 0.5rem;
-  @media screen and (max-width: 425px) {
-    grid-template-columns: minmax(auto, 1fr) 7fr;
-  }
+  grid-template-columns: minmax(100px, auto) 1fr;
 `
 
 const Who = styled.div`
@@ -29,25 +24,26 @@ const Msg = styled.div`
   word-break: break-all;
 `
 
-const UserListWrapper = styled.div`
-  width: calc(100% - 1rem);
+const ChatWrapper = styled.div`
+  position: absolute;
   top: 0px;
   bottom: 0px;
-  position: absolute;
+  left: 0.5rem;
+  right: 0.5rem;
   display: grid;
   grid-template-columns: 1fr 150px;
   grid-gap: 0.5rem;
-  overflow-y: scroll;
-  z-index: -1;
 `
 
-const UserList = styled.div`
-  grid-column-start: 2;
-  z-index: 2;
+const MsgWrapper = styled.div`
+  overflow-y: auto;
+`
+
+const UserListWrapper = styled.div`
+  overflow-y: auto;
 `
 
 const UserItem = styled.div`
-
 `
 
 const COLORS = [
@@ -68,31 +64,25 @@ function getUsernameColor(username) {
   return COLORS[index]
 }
 
-const ChatMessageContainer = ({ messages, className }) => {
+const ChatMessageContainer = ({ messages, className, location: { state: { allUsers, username } } }) => {
+  allUsers[username] = {}
   return (
     <Wrapper className={className}>
-      {messages.map((row, index) => (
-        <MsgBox key={index}>
-          <Who style={{ color: getUsernameColor(row.username)}}>{row.username}</Who>
-          <Msg style={{ color: getUsernameColor(row.username)}}>{row.message}</Msg>
-        </MsgBox>
-      ))}
-      <UserListWrapper>
-        <UserList>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456</UserItem>
-          <UserItem>1456e</UserItem>
-        </UserList>
-      </UserListWrapper>
+      <ChatWrapper>
+        <MsgWrapper>
+          {messages.map((row, index) => (
+            <MsgItem key={index}>
+              <Who style={{ color: getUsernameColor(row.username) }}>{row.username}{row.username}{row.username}{row.username}</Who>
+              <Msg style={{ color: getUsernameColor(row.username)}}>{row.message}</Msg>
+            </MsgItem>
+          ))}
+        </MsgWrapper>
+        <UserListWrapper>
+          {Object.keys(allUsers).map((row, index) => (
+            <UserItem style={{ color: getUsernameColor(row) }}>{row}</UserItem>
+          ))}
+        </UserListWrapper>
+      </ChatWrapper>
     </Wrapper>
   )
 }

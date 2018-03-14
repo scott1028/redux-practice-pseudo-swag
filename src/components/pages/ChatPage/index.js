@@ -15,6 +15,9 @@ class ChatPage extends Component {
       // username: self.props.history.location.state.username,
       // chats: [],
       // date: new Date()
+      textarea: {
+        value: '',
+      },
       currentMsg: '',
       messages: [], // eslint-disable-line
     }
@@ -53,10 +56,16 @@ class ChatPage extends Component {
   }
   onSendMsg() {
     this.io.emit('room chat', this.state.currentMsg)
-  }
-  onInputChange(msg) {
+    this.state.textarea.value = ''
     this.setState({
-      currentMsg: msg,
+      currentMsg: '',
+    })
+  }
+  onInputChange(dom) {
+    console.log(dom)
+    this.setState({
+      textarea: dom,
+      currentMsg: dom.value,
     })
   }
   render() {
@@ -71,6 +80,7 @@ class ChatPage extends Component {
       >
         <Chat
           {...self.props}
+          value={self.state.textarea.value}
           onSendMsg={self.onSendMsg}
           onInputChange={self.onInputChange}
           messages={self.state.messages}
