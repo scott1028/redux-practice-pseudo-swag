@@ -80,7 +80,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
   icon: 'swag-icon',
-  iconLink: '/',
+  iconLink: undefined,
 }
 
 export default Header
