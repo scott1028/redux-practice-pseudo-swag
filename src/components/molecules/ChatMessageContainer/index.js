@@ -7,14 +7,19 @@ import styled from 'styled-components'
 import { Button, Input } from 'components'
 
 const Wrapper = styled.div`
+  position: relative;
   padding: 1vmax;
+  // overflow-y: scroll;
+  // bottom: 0px;
 `
 
 const MsgBox = styled.div`
   display: grid;
-  grid-template-columns: minmax(auto, 1fr) 7fr;
+  grid-template-columns: minmax(auto, 1fr) 5fr 150px;
   grid-gap: 0.5rem;
-  // font-size: 3vmax;
+  @media screen and (max-width: 425px) {
+    grid-template-columns: minmax(auto, 1fr) 7fr;
+  }
 `
 
 const Who = styled.div`
@@ -22,6 +27,27 @@ const Who = styled.div`
 
 const Msg = styled.div`
   word-break: break-all;
+`
+
+const UserListWrapper = styled.div`
+  width: calc(100% - 1rem);
+  top: 0px;
+  bottom: 0px;
+  position: absolute;
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  grid-gap: 0.5rem;
+  overflow-y: scroll;
+  z-index: -1;
+`
+
+const UserList = styled.div`
+  grid-column-start: 2;
+  z-index: 2;
+`
+
+const UserItem = styled.div`
+
 `
 
 const COLORS = [
@@ -51,6 +77,22 @@ const ChatMessageContainer = ({ messages, className }) => {
           <Msg style={{ color: getUsernameColor(row.username)}}>{row.message}</Msg>
         </MsgBox>
       ))}
+      <UserListWrapper>
+        <UserList>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456</UserItem>
+          <UserItem>1456e</UserItem>
+        </UserList>
+      </UserListWrapper>
     </Wrapper>
   )
 }

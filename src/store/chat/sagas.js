@@ -59,9 +59,9 @@ export function* requestChatList(api, action) {
     for(var k in detail){
       chats.push({
         id: k,
-        owner: null,
+        // owner: null,
         avatar: '/avatar.jpg',
-        members: 0,
+        numUsers: 0,
         ...detail[k]
       })
     }
