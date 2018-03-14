@@ -33,7 +33,7 @@ class ChatPage extends Component {
     io.on('connect', () => {
       if (self.props.location.state.create){
         io.emit(
-          'createChat',
+          'create chat',
           self.props.location.state.username,
         )
       }
@@ -42,9 +42,9 @@ class ChatPage extends Component {
         self.props.location.state.username,
         self.props.location.state.chatId
       )
-      io.emit('getChats', null)
+      io.emit('get chats', null)
     })
-    io.on('getChats', (data) => {
+    io.on('get chats', (data) => {
       let chatId = self.props.location.state.chatId
       self.setState({
         allUsers: data[chatId].allUsers

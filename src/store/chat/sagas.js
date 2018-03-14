@@ -18,6 +18,7 @@ export function* createChatStart(api, action) {
       },
     })
   } catch (e) {
+    debugger;
     yield put({
       type: actions.CREATE_CHAT_FAIL,
       payload: e,

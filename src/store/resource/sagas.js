@@ -9,7 +9,10 @@ export function* createResource(api, { data }, { resource, thunk }) {
     const detail = yield call([api, api.post], `/${resource}`, data)
     // https://github.com/diegohaz/arc/wiki/Actions#async-actions
     yield put(actions.resourceCreateSuccess(resource, detail, { data }, thunk))
+    // debugger;
   } catch (e) {
+    console.log(e, detail);
+    // debugger;
     yield put(actions.resourceCreateFailure(resource, e, { data }, thunk))
   }
 }

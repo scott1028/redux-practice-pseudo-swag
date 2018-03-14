@@ -18,13 +18,14 @@ class DashboardPage extends Component {
       date: new Date()
     }
     self.createChat = self.createChat.bind(self)
+    self.logout = self.logout.bind(self)
   }
   componentDidMount() {
     const self = this
     const io = socketIOClient(apiUrl)
     self.io = io
-    io.on('connect', () => io.emit('getChats', null))
-    io.on('getChats', (data) => {
+    io.on('connect', () => io.emit('get chats', null))
+    io.on('get chats', (data) => {
       let chats = []
       for (let k in data) {
         chats.push({
@@ -52,10 +53,24 @@ class DashboardPage extends Component {
       numUsers: 1,
     })
   }
+  logout(){
+    let self = this;
+    fetch(`${apiUrl}/logout`, {
+      method: 'POST',
+      body: JSON.stringify({
+        username: self.props.location.state.username,
+      }),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      }),
+    }).then(function (resp) {
+      self.props.history.push('/');
+    })
+  }
   render(){
     var self = this;
     return (
-      <PageTemplate header={<Header title="Dashboard" sideRightMenu={<UserCreateChatButton onCreateChat={self.createChat} onLogout={function(){location.href = '/';}} />} />} footer={<Footer />}>
+      <PageTemplate header={<Header title="Dashboard" sideRightMenu={<UserCreateChatButton onCreateChat={self.createChat} onLogout={self.logout} />} />} footer={<Footer />}>
         <Dashboard chats={self.state.chats} />
       </PageTemplate>
     )
