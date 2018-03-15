@@ -31,18 +31,20 @@ class ChatPage extends Component {
     self.io = io
     // var io = self.io = socketIOClient('http://10.1.101.79:3000/')
     io.on('connect', () => {
-      if (self.props.location.state.create){
-        io.emit(
-          'create chat',
-          self.props.location.state.username,
-        )
-      }
+      // if (self.props.location.state.create){
+      //   io.emit(
+      //     'create chat',
+      //     self.props.location.state.username,
+      //   )
+      // }
       io.emit(
-        'add user',
+        'join room',
         self.props.location.state.username,
-        self.props.location.state.chatId
+        self.props.location.state.chatId,
       )
       io.emit('get chats', null)
+      // console.log(self.props.location.state)
+      // setTimeout(() => io.emit('get chats', null), 2000);
     })
     io.on('get chats', (data) => {
       let chatId = self.props.location.state.chatId
