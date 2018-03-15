@@ -12,6 +12,16 @@ class DashboardPage extends Component {
   constructor(props) {
     super(props)
     var self = this;
+
+    if (!self.props.history.location.state) {
+      this.state = {
+        username: null,
+        chats: [],
+        date: new Date()
+      }
+      return self.props.history.push('/')
+    }
+    
     this.state = {
       username: self.props.history.location.state.username,
       chats: [],
