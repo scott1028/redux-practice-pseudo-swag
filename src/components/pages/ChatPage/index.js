@@ -64,10 +64,12 @@ class ChatPage extends Component {
     })
   }
   onSendMsg() {
-    this.io.emit('room chat', this.state.currentMsg)
-    // this.io.emit('room chat', { toWho: this.state.toWho, message: this.state.currentMsg })
-    // or
-    // this.io.emit('room chat', this.state.toWho, this.state.currentMsg)
+    // this.io.emit('room chat', this.state.currentMsg)
+    if (this.state.toWho === 'All') {
+      this.io.emit('room chat', { toWho: null, message: this.state.currentMsg })
+    } else {
+      this.io.emit('room chat', { toWho: this.state.toWho, message: this.state.currentMsg })
+    }
     this.state.textarea.value = ''
     this.setState({
       currentMsg: '',

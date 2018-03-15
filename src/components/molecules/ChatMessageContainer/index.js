@@ -77,7 +77,7 @@ const ChatMessageContainer = ({
         <MsgWrapper>
           {messages.map((row, index) => (
             <MsgItem key={index}>
-              <Who style={{ color: getUsernameColor(row.username) }}>{row.username}:</Who>
+              <Who style={{ color: getUsernameColor(row.username) }}>{ (row.private) ? '>> ' : '' } {row.username}:</Who>
               <Msg style={{ color: getUsernameColor(row.username) }}>{row.message}</Msg>
             </MsgItem>
           ))}
@@ -100,6 +100,7 @@ const ChatMessageContainer = ({
 
 ChatMessageContainer.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
+    private: PropTypes.bool,
     username: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
   })).isRequired,
