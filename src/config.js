@@ -16,7 +16,7 @@ const config = {
   test: {},
   development: {},
   production: {
-    apiUrl: 'https://jsonplaceholder.typicode.com',
+    apiUrl: 'http://127.0.0.1:3000',
   },
 }
 
