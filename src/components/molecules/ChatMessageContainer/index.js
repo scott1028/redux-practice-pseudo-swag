@@ -87,7 +87,12 @@ const ChatMessageContainer = ({
             <UserItem
               key={index}
               style={{ color: getUsernameColor(row) }}
-              onClick={() => onSetToWho(row)}
+              onClick={() => {
+                if (row === username) {
+                  return
+                }
+                onSetToWho(row)
+              }}
             >
               {row}
             </UserItem>

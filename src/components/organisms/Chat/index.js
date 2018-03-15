@@ -40,9 +40,12 @@ const Chat = (props) => {
         <Div>
           <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)}>
             <option>All</option>
-            {Object.keys(props.allUsers).map((row, index) => (
-              <option key={index}>{row}</option> // eslint-disable-line react/no-array-index-key
-            ))}
+            {Object.keys(props.allUsers).map((row, index) => {
+              if (!(row === props.location.state.username)) {
+                return <option key={index}>{row}</option> // eslint-disable-line react/no-array-index-key
+              }
+              return null
+            })}
           </Input>
         </Div>
         <Div>
@@ -69,6 +72,7 @@ Chat.propTypes = {
   allUsers: PropTypes.object.isRequired,
   value: PropTypes.string.isRequired,
   toWho: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 Chat.defaultProps = {
