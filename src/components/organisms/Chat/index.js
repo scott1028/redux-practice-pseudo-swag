@@ -35,22 +35,44 @@ const ControlPannel = styled.div`
 const Chat = (props) => {
   return (
     <Wrapper>
-      <MessageContainer {...props} messages={props.messages} allUsers={props.allUsers} />
+      <MessageContainer {...props} />
       <ControlPannel>
-        <Div><Input type="textarea" onChange={(e) => props.onInputChange(e.target)} value={props.value} /></Div>
-        <Div><Button style={{ float: 'right' }} onClick={props.onSendMsg}>Send</Button></Div>
+        <Div>
+          <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)}>
+            <option>All</option>
+            {Object.keys(props.allUsers).map((row, index) => (
+              <option key={index}>{row}</option> // eslint-disable-line react/no-array-index-key
+            ))}
+          </Input>
+        </Div>
+        <Div>
+          <Input
+            type="textarea"
+            onChange={e => props.onInputChange(e.target)}
+            value={props.value}
+          />
+        </Div>
+        <Div>
+          <Button style={{ float: 'right' }} onClick={props.onSendMsg} disabled={!props.value}>
+            Send
+          </Button>
+        </Div>
       </ControlPannel>
     </Wrapper>
   )
 }
 
-// // ChatItem.propTypes = {
-// //   title: PropTypes.string.isRequired,
-// //   icon: PropTypes.string,
-// //   link: PropTypes.string,
-// //   soon: PropTypes.bool,
-// //   children: PropTypes.any,
-// //   code: PropTypes.node,
-// // }
+Chat.propTypes = {
+  onInputChange: PropTypes.func.isRequired,
+  onSendMsg: PropTypes.func.isRequired,
+  onSetToWho: PropTypes.func.isRequired,
+  allUsers: PropTypes.object.isRequired,
+  value: PropTypes.string.isRequired,
+  toWho: PropTypes.string.isRequired,
+}
+
+Chat.defaultProps = {
+  allUsers: {},
+}
 
 export default Chat

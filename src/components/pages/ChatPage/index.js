@@ -12,10 +12,8 @@ class ChatPage extends Component {
     console.log(socketIOClient)
 
     this.state = {
-      // username: self.props.history.location.state.username,
-      // chats: [],
-      // date: new Date()
-      allUsers: [],
+      toWho: 'All', // eslint-disable-line
+      allUsers: {}, // eslint-disable-line
       textarea: {
         value: '',
       },
@@ -24,32 +22,24 @@ class ChatPage extends Component {
     }
     this.onSendMsg = this.onSendMsg.bind(this)
     this.onInputChange = this.onInputChange.bind(this)
+    this.onSetToWho = this.onSetToWho.bind(this)
   }
   componentDidMount() {
     const self = this
     const io = socketIOClient(apiUrl)
     self.io = io
-    // var io = self.io = socketIOClient('http://10.1.101.79:3000/')
     io.on('connect', () => {
-      // if (self.props.location.state.create){
-      //   io.emit(
-      //     'create chat',
-      //     self.props.location.state.username,
-      //   )
-      // }
       io.emit(
         'join room',
         self.props.location.state.username,
         self.props.location.state.chatId,
       )
       io.emit('get chats', null)
-      // console.log(self.props.location.state)
-      // setTimeout(() => io.emit('get chats', null), 2000);
     })
     io.on('get chats', (data) => {
-      let chatId = self.props.location.state.chatId
+      const { props: { location: { state: { chatId } } } } = self
       self.setState({
-        allUsers: data[chatId].allUsers
+        allUsers: data[chatId].allUsers,
       })
     })
     io.on('room chat', (data) => {
@@ -67,8 +57,17 @@ class ChatPage extends Component {
   componentWillUnmount() {
     this.io.disconnect()
   }
+  onSetToWho(username) {
+    const self = this
+    self.setState({
+      toWho: username,
+    })
+  }
   onSendMsg() {
     this.io.emit('room chat', this.state.currentMsg)
+    // this.io.emit('room chat', { toWho: this.state.toWho, message: this.state.currentMsg })
+    // or
+    // this.io.emit('room chat', this.state.toWho, this.state.currentMsg)
     this.state.textarea.value = ''
     this.setState({
       currentMsg: '',
@@ -93,11 +92,13 @@ class ChatPage extends Component {
       >
         <Chat
           {...self.props}
+          toWho={self.state.toWho}
           allUsers={self.state.allUsers}
           value={self.state.textarea.value}
+          messages={self.state.messages}
           onSendMsg={self.onSendMsg}
           onInputChange={self.onInputChange}
-          messages={self.state.messages}
+          onSetToWho={self.onSetToWho}
         />
       </ChatTemplate>
     )

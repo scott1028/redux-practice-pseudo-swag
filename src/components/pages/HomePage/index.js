@@ -6,7 +6,7 @@ import { PostForm, PostList } from 'containers'
 
 const HomePage = () => {
   return (
-    <PageTemplate header={<Header title="Pseudo Swag" />} footer={<Footer />}>
+    <PageTemplate header={<Header title="Pseudo Chat" />} footer={<Footer />}>
       <PostForm />
     </PageTemplate>
   )

@@ -4,7 +4,7 @@ import styled from 'styled-components'
 // import { ifProp } from 'styled-tools'
 
 // import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
-import { Button, Input } from 'components'
+// import { Button, Input } from 'components'
 
 const Wrapper = styled.div`
   position: relative;
@@ -49,22 +49,27 @@ const UserItem = styled.div`
 const COLORS = [
   '#e21400', '#91580f', '#f8a700', '#f78b00',
   '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
-  '#3b88eb', '#3824aa', '#a700ff', '#d300e7'
+  '#3b88eb', '#3824aa', '#a700ff', '#d300e7',
 ]
 
 // Gets the color of a username through our hash function
 function getUsernameColor(username) {
   // Compute hash function
   let hash = 7
-  for (let i = 0; i < username.length; i++) {
-    hash = username.charCodeAt(i) + (hash << 5) - hash
+  for (let i = 0; i < username.length; i++) { // eslint-disable-line
+    hash = username.charCodeAt(i) + (hash << 5) - hash // eslint-disable-line
   }
   // Calculate color
-  let index = Math.abs(hash % COLORS.length)
+  let index = Math.abs(hash % COLORS.length) // eslint-disable-line
   return COLORS[index]
 }
-
-const ChatMessageContainer = ({ messages, className, location: { state: { username } }, allUsers }) => {
+/* eslint-disable react/no-array-index-key */
+const ChatMessageContainer = ({
+  messages,
+  className,
+  location: { state: { username } }, allUsers, onSetToWho,
+}) => {
+  /* eslint no-param-reassign: ["error", { "props": false }] */
   allUsers[username] = {}
   return (
     <Wrapper className={className}>
@@ -73,13 +78,19 @@ const ChatMessageContainer = ({ messages, className, location: { state: { userna
           {messages.map((row, index) => (
             <MsgItem key={index}>
               <Who style={{ color: getUsernameColor(row.username) }}>{row.username}:</Who>
-              <Msg style={{ color: getUsernameColor(row.username)}}>{row.message}</Msg>
+              <Msg style={{ color: getUsernameColor(row.username) }}>{row.message}</Msg>
             </MsgItem>
           ))}
         </MsgWrapper>
         <UserListWrapper>
           {Object.keys(allUsers).map((row, index) => (
-            <UserItem key={index} style={{ color: getUsernameColor(row) }}>{row}</UserItem>
+            <UserItem
+              key={index}
+              style={{ color: getUsernameColor(row) }}
+              onClick={() => onSetToWho(row)}
+            >
+              {row}
+            </UserItem>
           ))}
         </UserListWrapper>
       </ChatWrapper>
@@ -87,12 +98,15 @@ const ChatMessageContainer = ({ messages, className, location: { state: { userna
   )
 }
 
-ChatMessageContainer.prototype = {
+ChatMessageContainer.propTypes = {
   messages: PropTypes.arrayOf(PropTypes.shape({
     username: PropTypes.string.isRequired,
     message: PropTypes.string.isRequired,
-  })),
-  className: PropTypes.string,
+  })).isRequired,
+  className: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  allUsers: PropTypes.object.isRequired,
+  onSetToWho: PropTypes.func.isRequired,
 }
 
 export default ChatMessageContainer

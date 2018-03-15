@@ -79,7 +79,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  icon: 'swag-icon',
+  icon: 'scp-chat',
   iconLink: undefined,
 }
 

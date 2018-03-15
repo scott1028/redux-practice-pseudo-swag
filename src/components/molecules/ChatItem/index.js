@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { font, palette } from 'styled-theme'
+import { palette } from 'styled-theme'
 import { withRouter } from 'react-router-dom'
-import { apiUrl } from 'config'
+// import { apiUrl } from 'config'
 // import { ifProp } from 'styled-tools'
 
 // import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
@@ -31,11 +31,14 @@ const OnwerLabel = styled.label`
   background-color: ${palette('primary', 0)}
 `
 
-const enterChat = ({ id: chatId, username, allUsers, numUsers, history }) => {
-  // let { id, username, allUsers, numUsers } = props;
+const enterChat = ({
+  id: chatId, username, allUsers, numUsers, history,
+}) => {
   return () => {
     console.log(chatId, username)
-    history.push(`/chats/${chatId}`, { chatId, username, allUsers, numUsers })
+    history.push(`/chats/${chatId}`, {
+      chatId, username, allUsers, numUsers,
+    })
   }
 }
 
@@ -49,14 +52,11 @@ const ChatItem = (props) => {
     </Wrapper>)
 }
 
-// ChatItem.propTypes = {
-//   title: PropTypes.string.isRequired,
-//   icon: PropTypes.string,
-//   link: PropTypes.string,
-//   soon: PropTypes.bool,
-//   children: PropTypes.any,
-//   code: PropTypes.node,
-// }
+ChatItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
+  numUsers: PropTypes.number,
+}
 
 export default withRouter(props => (
   <ChatItem {...props} />

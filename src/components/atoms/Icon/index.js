@@ -38,6 +38,7 @@ Icon.propTypes = {
   height: PropTypes.number,
   palette: PropTypes.string,
   reverse: PropTypes.bool,
+  iconStyle: PropTypes.object,
 }
 
 export default Icon
