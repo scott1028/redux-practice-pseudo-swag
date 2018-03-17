@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 
 import { ChatItem, ChatListContainer } from 'components'
-import api from 'services/api'
+// import api from 'services/api'
 import { apiUrl } from 'config'
 
 const Dashboard = props => (

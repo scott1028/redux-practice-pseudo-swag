@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { resourceCreateRequest } from 'store/actions'
-import { createValidator, required } from 'services/validation'
+// import { createValidator, required } from 'services/validation'
 import { withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as actions from 'store/actions'
@@ -35,17 +35,17 @@ const onSubmit = (data, dispatch, props) => {
     })
   })
 }
-  
-const validate = createValidator({
-  title: [required],
-  body: [required],
-})
+
+// const validate = createValidator({
+//   title: [required],
+//   body: [required],
+// })
 
 const ReduxForm = reduxForm({
   form: 'PostForm',
   destroyOnUnmount: false,
   onSubmit,
-  validate,
+  // validate,
 })(PostFormContainer)
 
 // const mapStateToProps = state => ({
