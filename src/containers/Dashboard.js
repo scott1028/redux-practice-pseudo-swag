@@ -4,14 +4,14 @@ import React, { Component } from 'react'
 // import { createValidator, required } from 'services/validation'
 import { withRouter } from 'react-router-dom'
 
-import { ChatItem, ChatListContainer } from 'components'
+import { ChatItem, ChatRoomItem, ChatListContainer } from 'components'
 import api from 'services/api'
 import { apiUrl } from 'config'
 
 const Dashboard = props => (
   <ChatListContainer>
     {
-        props.chats.map(row => <ChatItem key={row.id} {...row} username={props.history.location.state.username} />)
+        props.chats.map(row => <ChatRoomItem key={row.id} {...row} username={props.history.location.state.username} />)
     }
   </ChatListContainer>)
 

@@ -35,12 +35,13 @@ class DashboardPage extends Component {
         io.on('connect', () => io.emit('get chats', null))
         io.on('get chats', (data) => {
             const chats = []
+						const rand = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+						rand.sort(() => Math.random() - 0.5)
             for (let k in data) {
-                let rand = Math.floor(Math.random() * 10) + Math.floor(Math.random() * 10) + 1
                 if (Object.prototype.hasOwnProperty.call(data, k)) {
                     chats.push({
                         id: k,
-                        avatar: `/images/${rand}.jpeg`,
+                        avatar: `/images/${rand[k[k.length-1]]}.jpeg`,
                         numUsers: 0,
                         ...data[k],
                     })

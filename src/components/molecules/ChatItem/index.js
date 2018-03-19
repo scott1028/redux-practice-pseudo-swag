@@ -27,7 +27,7 @@ const Label = styled.label`
   background-color: ${palette('primary', 4)}
 `
 
-const OnwerLabel = styled.label`
+const OwnerLabel = styled.label`
   background-color: ${palette('primary', 0)}
 `
 
@@ -47,7 +47,7 @@ const ChatItem = (props) => {
     // <Wrapper onClick={enterChat(props.id, props.username, props.history.push)}>
     <Wrapper onClick={enterChat(props)}>
       <ImageDiv><Image src={props.avatar} /></ImageDiv>
-      <OnwerLabel>{props.id}</OnwerLabel>
+      <OwnerLabel>{props.id}</OwnerLabel>
       <Label>{props.numUsers}</Label>
     </Wrapper>)
 }
