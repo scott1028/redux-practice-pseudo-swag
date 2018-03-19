@@ -20,7 +20,7 @@ const ContainerLogin = styled.div `
 `
 
 
-const LoginFormContainer = styled.form`
+const LoginFormContainer = styled.div`
 	width: 500px;
 	text-align: center;
 	top: 35%;
@@ -43,32 +43,29 @@ const LoginInput = styled.input`
 	height:100%;
 	font-size: 24px;
 	background: transparent;
+	height: 50px;
 	border: none;
 	color: white;
 	display: block;
 	text-align: center;
-	height: 50px;
 	border-bottom: 1.5px solid #cccccc;
 	&:focus {
 		outline: none;
 		border-bottom: 1.5px solid white;
 		transition: 1s;
-		input-placeholder: '';
 	}
 	&::placeholder {
 		color: #e5e5e5;
 	}
 `
 
-
-
-const LoginForm = () => {
+const LoginForm = ({enterEvent, ...props}) => {
     return (
 			<ContainerLogin>
-				<LoginFormContainer>
-					<LoginFormTitle>Welcome to Chat Room</LoginFormTitle>
-					<LoginInput placeholder='Type Your Username'/> 
-				</LoginFormContainer>
+					<LoginFormContainer>
+						<LoginFormTitle>Welcome to Chat Room</LoginFormTitle>
+						<LoginInput placeholder='Type Your Username' onKeyPress={enterEvent}/> 
+					</LoginFormContainer>
 			</ContainerLogin>
     )
 }
