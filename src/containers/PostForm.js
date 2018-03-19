@@ -36,29 +36,11 @@ const onSubmit = (data, dispatch, props) => {
   })
 }
 
-// const validate = createValidator({
-//   title: [required],
-//   body: [required],
-// })
-
 const ReduxForm = reduxForm({
   form: 'PostForm',
   destroyOnUnmount: false,
   onSubmit,
-  // validate,
 })(PostFormContainer)
-
-// const mapStateToProps = state => ({
-//   owner: state.chat.owner,
-// })
-
-// const mapDispatchToProps = dispatch => ({
-//   setOwner: (username) => dispatch(actions.createChatAction({ type: actions.SET_USERNAME, payload: username })),
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(withRouter(({ history, setOwner }) => (
-//   <ReduxForm history={history} setOwner={setOwner} />
-// )))
 
 export default withRouter(({ history }) => (
   <ReduxForm history={history} />

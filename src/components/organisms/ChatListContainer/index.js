@@ -1,9 +1,4 @@
-// import React from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// import { ifProp } from 'styled-tools'
-
-// import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
 
 const ChatListContainer = styled.div`
   position: relative;

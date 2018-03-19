@@ -3,9 +3,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { size } from 'styled-theme'
 
-// import { IconLink, PrimaryNavigation, Block } from 'components'
 import { IconLink, Block } from 'components'
-// import { UserButton } from 'containers'
 
 const Wrapper = styled(Block)`
   display: flex;
@@ -25,10 +23,6 @@ const InnerWrapper = styled.div`
     margin-left: 1rem;
   }
 `
-
-// const StyledPrimaryNavigation = styled(PrimaryNavigation)`
-//   flex: 1
-// `
 
 const BannerWrapper = styled.h2`
   & {
