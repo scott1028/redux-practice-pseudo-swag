@@ -43,16 +43,13 @@ const SendButton = styled.button`
 		background-color: rgba(255, 255, 255, 0.1);
 	}
 `
-
-
-
 const Chat = (props) => {
   return (
     <Wrapper>
       <MessageContainer {...props} />
       <ControlPannel>
         <Div>
-          <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)}>
+          <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)} style={{backgroundColor: 'rgba(255,255,255,0.4)'}}>
             <option>All</option>
             {Object.keys(props.allUsers).map((row, index) => (
               <option key={index}>{row}</option> // eslint-disable-line react/no-array-index-key
@@ -60,11 +57,12 @@ const Chat = (props) => {
           </Input>
         </Div>
         <Div>
-          <Input
-            type="textarea"
-            onChange={e => props.onInputChange(e.target)}
-            value={props.value}
-          />
+          	<Input
+            	type="textarea"
+            	onChange={e => props.onInputChange(e.target)}
+            	value={props.value}
+							style={{backgroundColor: 'rgba(255,255,255,0.4)'}}
+          	/>
         </Div>
         <Div>
           <SendButton style={{ float: 'right' }} onClick={props.onSendMsg} disabled={!props.value}>

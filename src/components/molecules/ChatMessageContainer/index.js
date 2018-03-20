@@ -9,7 +9,8 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   position: relative;
   padding: 1vmax;
-	background: white;
+	//background: white;
+	background: rgba(255, 255, 255, 0.4);
 `
 
 const MsgItem = styled.div`

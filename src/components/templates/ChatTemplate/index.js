@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   @media screen and (max-width: 640px) {
     padding-top: 3.25rem;
   }
-  background: url(/images/bg3.jpg) no-repeat center center;
+  background: url(/images/bg2.jpg) no-repeat center center;
 	background-size: 100%;
   // background-size: cover;
   // background-attachment: fixed;
@@ -34,7 +34,8 @@ const Content = styled.section`
   box-sizing: border-box;
   margin: 2rem auto;
   margin-bottom: 0rem;
-  max-width: ${size('maxWidth')};
+  max-width: 650px;
+	//max-width: ${size('maxWidth')};
   height: calc(100vh - 3.75rem - 2rem);
   @media screen and (max-width: 640px) {
     height: calc(100vh - 3.25rem - 2rem);

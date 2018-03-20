@@ -16,7 +16,7 @@ const ContainerLogin = styled.div `
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	background-image: url('images/bg1.jpg');
+	background-image: url('/images/bg1.jpg');
 `
 
 
