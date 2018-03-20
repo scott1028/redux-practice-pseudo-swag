@@ -9,11 +9,14 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding-top: 3.75rem;
   min-height: 100vh;
+	margin-top: 5em;
   box-sizing: border-box;
+	//background: linear-gradient(141deg,#003973,#e5e5be,#218292);
   @media screen and (max-width: 640px) {
     padding-top: 3.25rem;
   }
-  // background: url(/bg-web.png) no-repeat center center;
+  background: url(/images/bg3.jpg) no-repeat center center;
+	background-size: 100%;
   // background-size: cover;
   // background-attachment: fixed;
 `
@@ -29,7 +32,7 @@ const Header = styled.header`
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 5rem auto;
+  margin: 2rem auto;
   margin-bottom: 0rem;
   max-width: ${size('maxWidth')};
   height: calc(100vh - 3.75rem - 2rem);

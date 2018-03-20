@@ -14,6 +14,8 @@ const ImageDiv = styled.div`
 	position: relative;
 	height: 300px;
 	box-sizing: inherit;
+	background: no-repeat center center;
+	background-size: 150%;
 	&:hover {
 		opacity: 0.6;
 	}
