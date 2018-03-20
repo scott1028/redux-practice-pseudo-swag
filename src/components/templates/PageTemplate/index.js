@@ -34,7 +34,7 @@ const Sponsor = styled.section``
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 2rem auto;
+  margin: 5rem auto;
   max-width: ${size('maxWidth')};
 `
 

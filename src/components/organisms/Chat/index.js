@@ -27,6 +27,7 @@ const MessageContainer = styled(ChatMessageContainer)`
 const ControlPannel = styled.div`
   padding: 2vmax;
   height: auto;
+	background-color: white;
   & button, & textarea {
     font-size: 1.5rem;
   }

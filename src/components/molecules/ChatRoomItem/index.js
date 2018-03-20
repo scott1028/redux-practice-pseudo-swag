@@ -12,7 +12,6 @@ const Wrapper = styled.div`
 `
 const ImageDiv = styled.div`
 	position: relative;
-	width: 400px;
 	height: 300px;
 	box-sizing: inherit;
 	&:hover {

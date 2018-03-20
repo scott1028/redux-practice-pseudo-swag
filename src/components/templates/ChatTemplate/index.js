@@ -23,18 +23,19 @@ const Header = styled.header`
   top: 0;
   width: 100%;
   z-index: 999;
+	background-color: rgba(0, 4, 6, 0.6);
 `
 
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 2rem auto;
+  margin: 5rem auto;
   margin-bottom: 0rem;
   max-width: ${size('maxWidth')};
   height: calc(100vh - 3.75rem - 2rem);
   @media screen and (max-width: 640px) {
     height: calc(100vh - 3.25rem - 2rem);
-  }
+  };
 `
 
 const ChatTemplate = ({

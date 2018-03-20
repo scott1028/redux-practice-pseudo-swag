@@ -104,6 +104,10 @@ const ButtonBox = styled.div`
 		background-color: transparent;
 		color: white;
 		border-radius: 8px;
+
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.4);
+		}
   }
 `
 
@@ -112,6 +116,10 @@ const CreateChatButton = styled(({ className, onCreateChat, onLogout }) => (
     <Button className={className} type="button" onClick={onLogout}>Log-out</Button>
     <Gap className={className} />
     <Button className={className} type="button" onClick={onCreateChat}>Create</Button>
+    <Gap className={className} />
+    <Button className={className} type="button">About</Button>
+    <Gap className={className} />
+    <Button className={className} type="button">Shops</Button>
   </ButtonBox>))`
   float: right;
 `
