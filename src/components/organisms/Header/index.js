@@ -11,9 +11,11 @@ const Wrapper = styled(Block)`
   display: flex;
   justify-content: center;
   padding: 1rem;
-  @media screen and (max-width: 640px) {
+	bottom: 30px;
+	@media screen and (max-width: 640px) {
     padding: 0.5rem;
   }
+	background-color: rgba(0, 4, 6, 0.6);
 `
 
 const InnerWrapper = styled.div`

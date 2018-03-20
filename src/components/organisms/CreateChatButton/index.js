@@ -100,7 +100,10 @@ const Gap = styled.div`
 const ButtonBox = styled.div`
   flex: 1;
   & button {
-    font-size: 0.8rem;
+    font-size: 1.0rem;
+		background-color: transparent;
+		color: white;
+		border-radius: 8px;
   }
 `
 

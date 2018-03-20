@@ -15,6 +15,9 @@ const ImageDiv = styled.div`
 	width: 400px;
 	height: 300px;
 	box-sizing: inherit;
+	&:hover {
+		opacity: 0.6;
+	}
 `
 
 const Label = styled.div`
@@ -74,4 +77,6 @@ const ChatRoomItem = (props) => {
 }
 
 
-export default ChatRoomItem
+export default withRouter(props => (
+		<ChatRoomItem {...props}/>
+))
