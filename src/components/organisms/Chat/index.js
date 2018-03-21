@@ -50,11 +50,11 @@ const Chat = (props) => {
           <Input
             type="textarea"
             onChange={e => props.onInputChange(e.target)}
-            value={props.value}
+            value={props.currentMsg}
           />
         </Div>
         <Div>
-          <Button style={{ float: 'right' }} onClick={props.onSendMsg} disabled={!props.value}>
+          <Button style={{ float: 'right' }} onClick={props.onSendMsg} disabled={!props.currentMsg}>
             Send
           </Button>
         </Div>
@@ -68,7 +68,7 @@ Chat.propTypes = {
   onSendMsg: PropTypes.func.isRequired,
   onSetToWho: PropTypes.func.isRequired,
   allUsers: PropTypes.object.isRequired,
-  value: PropTypes.string.isRequired,
+  currentMsg: PropTypes.string.isRequired,
   toWho: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
 }
