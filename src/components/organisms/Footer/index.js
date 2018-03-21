@@ -4,12 +4,13 @@ import { palette } from 'styled-theme'
 
 import { Paragraph, Link, Icon } from 'components'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div `
   background-color: transparent;
   padding: 2rem;
 `
 
-const Credits = styled(Paragraph)`
+const Credits = styled(Paragraph)
+`
   vertical-align: center;
   text-align: center;
   margin: 0;
@@ -17,13 +18,14 @@ const Credits = styled(Paragraph)`
 `
 
 const Footer = (props) => {
-  return (
-    <Wrapper {...props}>
-      <Credits>
-      	Copyright © 2018 Change Healthcare Inc. All rights reserved.
-			</Credits>
-    </Wrapper>
-  )
+    return ( <
+        Wrapper {...props } >
+        <
+        Credits >
+        Copyright© 2018 Change Healthcare Inc.All rights reserved. <
+        /Credits> <
+        /Wrapper>
+    )
 }
 
 export default Footer

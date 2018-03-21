@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// import { ifProp } from 'styled-tools'
-
-// import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
-// import { Button, Input } from 'components'
 
 const Wrapper = styled.div`
   position: relative;
@@ -89,7 +85,12 @@ const ChatMessageContainer = ({
             <UserItem
               key={index}
               style={{ color: getUsernameColor(row) }}
-              onClick={() => onSetToWho(row)}
+              onClick={() => {
+                if (row === username) {
+                  return
+                }
+                onSetToWho(row)
+              }}
             >
               {row}
             </UserItem>

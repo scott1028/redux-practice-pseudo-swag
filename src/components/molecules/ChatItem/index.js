@@ -3,10 +3,6 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { palette } from 'styled-theme'
 import { withRouter } from 'react-router-dom'
-// import { apiUrl } from 'config'
-// import { ifProp } from 'styled-tools'
-
-// import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
 
 const Wrapper = styled.div`
   position: relative;
@@ -44,7 +40,6 @@ const enterChat = ({
 
 const ChatItem = (props) => {
   return (
-    // <Wrapper onClick={enterChat(props.id, props.username, props.history.push)}>
     <Wrapper onClick={enterChat(props)}>
       <ImageDiv><Image src={props.avatar} /></ImageDiv>
       <OwnerLabel>{props.id}</OwnerLabel>

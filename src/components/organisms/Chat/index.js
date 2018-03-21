@@ -1,9 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-// import { ifProp } from 'styled-tools'
 
-// import { Icon, Link, Paragraph, Heading, Badge, PreformattedText } from 'components'
 import { Button, Input, ChatMessageContainer } from 'components'
 
 const Wrapper = styled.div`
@@ -51,9 +49,12 @@ const Chat = (props) => {
         <Div>
           <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)} style={{backgroundColor: 'rgba(255,255,255,0.4)'}}>
             <option>All</option>
-            {Object.keys(props.allUsers).map((row, index) => (
-              <option key={index}>{row}</option> // eslint-disable-line react/no-array-index-key
-            ))}
+            {Object.keys(props.allUsers).map((row, index) => {
+              if (!(row === props.location.state.username)) {
+                return <option key={index}>{row}</option> // eslint-disable-line react/no-array-index-key
+              }
+              return null
+            })}
           </Input>
         </Div>
         <Div>
@@ -81,6 +82,7 @@ Chat.propTypes = {
   allUsers: PropTypes.object.isRequired,
   value: PropTypes.string.isRequired,
   toWho: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
 }
 
 Chat.defaultProps = {
