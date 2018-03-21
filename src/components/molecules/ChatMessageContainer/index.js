@@ -5,6 +5,8 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   position: relative;
   padding: 1vmax;
+	//background: white;
+	background: rgba(255, 255, 255, 0.7);
 `
 
 const MsgItem = styled.div`
@@ -43,9 +45,9 @@ const UserItem = styled.div`
 `
 
 const COLORS = [
-  '#e21400', '#91580f', '#f8a700', '#f78b00',
-  '#58dc00', '#287b00', '#a8f07a', '#4ae8c4',
-  '#3b88eb', '#3824aa', '#a700ff', '#d300e7',
+  '#12fff7', '#f0c27b', '#4b1248', '#53346d',
+  '#ffafbd', '#c9ffbf', '#606c88', '3f4c6b',
+  '#649173', '#dbd5a4', '#8ca6db', '#3a7bd5',
 ]
 
 // Gets the color of a username through our hash function

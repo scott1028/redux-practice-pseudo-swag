@@ -25,18 +25,29 @@ const MessageContainer = styled(ChatMessageContainer)`
 const ControlPannel = styled.div`
   padding: 2vmax;
   height: auto;
+	background-color: transparent;
   & button, & textarea {
     font-size: 1.5rem;
   }
 `
-
+const SendButton = styled.button`
+	background:transparent;
+	color: white;
+	border: none;
+	font-size: 16px;
+	padding: 0.5em;
+	border-radius: 8px;
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1);
+	}
+`
 const Chat = (props) => {
   return (
     <Wrapper>
       <MessageContainer {...props} />
       <ControlPannel>
         <Div>
-          <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)}>
+          <Input type="select" value={props.toWho} onChange={e => props.onSetToWho(e.target.value)} style={{backgroundColor: 'rgba(255,255,255,0.4)'}}>
             <option>All</option>
             {Object.keys(props.allUsers).map((row, index) => {
               if (!(row === props.location.state.username)) {
@@ -47,16 +58,17 @@ const Chat = (props) => {
           </Input>
         </Div>
         <Div>
-          <Input
-            type="textarea"
-            onChange={e => props.onInputChange(e.target)}
-            value={props.value}
-          />
+          	<Input
+            	type="textarea"
+            	onChange={e => props.onInputChange(e.target)}
+            	value={props.value}
+							style={{backgroundColor: 'rgba(255,255,255,0.4)'}}
+          	/>
         </Div>
         <Div>
-          <Button style={{ float: 'right' }} onClick={props.onSendMsg} disabled={!props.value}>
+          <SendButton style={{ float: 'right' }} onClick={props.onSendMsg} disabled={!props.value}>
             Send
-          </Button>
+         </SendButton>
         </Div>
       </ControlPannel>
     </Wrapper>

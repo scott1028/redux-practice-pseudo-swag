@@ -3,9 +3,9 @@ import styled from 'styled-components'
 const ChatListContainer = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   box-sizing: border-box;
-  @media screen and (max-width: 1024px) {
+	@media screen and (max-width: 1024px) {
     padding: 0.5rem;
     grid-template-columns: repeat(3, 1fr);
   }

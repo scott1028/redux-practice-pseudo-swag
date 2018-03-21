@@ -10,7 +10,8 @@ const Wrapper = styled.div`
   padding-top: 3.75rem;
   min-height: 100vh;
   box-sizing: border-box;
-  @media screen and (max-width: 640px) {
+  background: linear-gradient(141deg, #003973, #e5e5be, #218292);
+	@media screen and (max-width: 640px) {
     padding-top: 3.25rem;
   }
   // background: url(/bg-web.png) no-repeat center center;
@@ -23,6 +24,7 @@ const Header = styled.header`
   top: 0;
   width: 100%;
   z-index: 999;
+	background-color: transparent;
 `
 
 const Hero = styled.section``
@@ -32,7 +34,7 @@ const Sponsor = styled.section``
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 2rem auto;
+  margin: 5rem auto;
   max-width: ${size('maxWidth')};
 `
 
@@ -45,7 +47,7 @@ const PageTemplate = ({
 }) => {
   return (
     <Wrapper {...props}>
-      <Header>{header}</Header>
+			<Header>{header}</Header>
       {hero && <Hero>{hero}</Hero>}
       {sponsor && <Sponsor>{sponsor}</Sponsor>}
       <Content>{children}</Content>
