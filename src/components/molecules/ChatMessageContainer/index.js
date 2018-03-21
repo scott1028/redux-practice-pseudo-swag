@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   position: relative;
   padding: 1vmax;
 	//background: white;
-	background: rgba(255, 255, 255, 0.4);
+	background: rgba(255, 255, 255, 0.7);
 `
 
 const MsgItem = styled.div`
