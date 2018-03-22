@@ -70,15 +70,15 @@ class ChatPage extends Component {
     } else {
       this.io.emit('room chat', { toWho: this.state.toWho, message: this.state.currentMsg })
     }
-    this.state.textarea.value = ''
+    // this.state.textarea.value = ''
     this.setState({
       currentMsg: '',
     })
   }
   onInputChange(dom) {
-    console.log(dom)
+    // console.log(dom)
     this.setState({
-      textarea: dom,
+      // textarea: dom,
       currentMsg: dom.value,
     })
   }
@@ -96,7 +96,7 @@ class ChatPage extends Component {
           {...self.props}
           toWho={self.state.toWho}
           allUsers={self.state.allUsers}
-          value={self.state.textarea.value}
+          currentMsg={self.state.currentMsg}
           messages={self.state.messages}
           onSendMsg={self.onSendMsg}
           onInputChange={self.onInputChange}
