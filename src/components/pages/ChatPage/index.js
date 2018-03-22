@@ -14,9 +14,6 @@ class ChatPage extends Component {
     this.state = {
       toWho: 'All', // eslint-disable-line
       allUsers: {}, // eslint-disable-line
-      textarea: {
-        value: '',
-      },
       currentMsg: '',
       messages: [], // eslint-disable-line
     }
